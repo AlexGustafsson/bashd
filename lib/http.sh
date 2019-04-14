@@ -32,8 +32,20 @@ function respondWithPlainText {
   echo ""
 }
 
+function respondWithPlainText404 {
+  echo "HTTP/1.1 404"
+  echo "Content-Type: text/plain; charset=utf-8"
+  echo ""
+}
+
 function respondWithHTML {
   echo "HTTP/1.1 200 OK"
+  echo "Content-Type: text/html; charset=utf-8"
+  echo ""
+}
+
+function respondWithHTML404 {
+  echo "HTTP/1.1 404"
   echo "Content-Type: text/html; charset=utf-8"
   echo ""
 }
