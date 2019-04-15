@@ -10,4 +10,4 @@ fi
 
 debug "Starting"
 # -T 1
-socat -d -d TCP-LISTEN:8080,fork,reuseaddr EXEC:"$BASHD_CURRENT_DIRECTORY/default/index.sh"
+socat -d -d TCP-LISTEN:8080,fork,reuseaddr EXEC:"$BASHD_CURRENT_DIRECTORY/lib/handler.sh"

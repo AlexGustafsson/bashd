@@ -49,3 +49,9 @@ function respondWithHTML404 {
   echo "Content-Type: text/html; charset=utf-8"
   echo ""
 }
+
+function respondWithPlainText500 {
+  echo "HTTP/1.1 500"
+  echo "Content-Type: text/html; charset=utf-8"
+  echo ""
+}
