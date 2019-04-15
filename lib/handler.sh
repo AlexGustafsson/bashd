@@ -11,6 +11,7 @@ exitCode="$?"
 if [[ "$exitCode" -eq 0 ]]; then
   echo "$response"
 else
-  respondWithPlainText500
+  setResponseCode "500"
+  setResponseType "$HTTP_TYPE_PLAIN_TEXT"
   echo "Internal Server Error"
 fi

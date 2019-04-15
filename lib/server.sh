@@ -18,7 +18,7 @@ function route {
   fi
 }
 
-function handle {
+function handleRequest {
   parseRequest
   if [[ ! -z "${SERVER_GET_HANDLERS[$HTTP_PATH]}" ]]; then
     ${SERVER_GET_HANDLERS[$HTTP_PATH]}
@@ -26,7 +26,9 @@ function handle {
     if [[ ! -z "${SERVER_GET_HANDLERS["404"]}" ]]; then
       ${SERVER_GET_HANDLERS["404"]}
     else
-      respondWithPlainText404
+      setResponseCode "404"
+      setResponseType "$HTTP_TYPE_PLAIN_TEXT"
+      startResponse
       echo "Cannot $HTTP_METHOD $HTTP_PATH"
     fi
   fi

@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+export HTTP_TYPE_PLAIN_TEXT="text/plain; charset=utf-8"
+export HTTP_TYPE_HTML="text/html; charset=utf-8"
+
+export HTTP_CODE_OK="200 OK"
+export HTTP_CODE_INTERNAL_SERVER_ERROR="500"
+
+export HTTP_RESPONSE_CODE="$HTTP_CODE_OK"
+export HTTP_RESPONSE_TYPE="$HTTP_TYPE_HTML"
+
 export HTTP_REQUEST=""
 export HTTP_VERSION=""
 export HTTP_METHOD=""
@@ -26,32 +35,16 @@ function parseRequest {
   HTTP_USER_AGENT="$(getHeader "User-Agent")"
 }
 
-function respondWithPlainText {
-  echo "HTTP/1.1 200 OK"
-  echo "Content-Type: text/plain; charset=utf-8"
-  echo ""
+function setResponseCode {
+  HTTP_RESPONSE_CODE="$1"
 }
 
-function respondWithPlainText404 {
-  echo "HTTP/1.1 404"
-  echo "Content-Type: text/plain; charset=utf-8"
-  echo ""
+function setResponseType {
+  HTTP_RESPONSE_TYPE="$1"
 }
 
-function respondWithHTML {
-  echo "HTTP/1.1 200 OK"
-  echo "Content-Type: text/html; charset=utf-8"
-  echo ""
-}
-
-function respondWithHTML404 {
-  echo "HTTP/1.1 404"
-  echo "Content-Type: text/html; charset=utf-8"
-  echo ""
-}
-
-function respondWithPlainText500 {
-  echo "HTTP/1.1 500"
-  echo "Content-Type: text/html; charset=utf-8"
+function startResponse {
+  echo "HTTP/1.1 $HTTP_RESPONSE_CODE"
+  echo "Content-Type: $HTTP_RESPONSE_TYPE"
   echo ""
 }

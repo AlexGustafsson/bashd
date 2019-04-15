@@ -6,7 +6,7 @@ INDEX_CURRENT_DIRECTORY="$(dirname -- "$(readlink -f -- "${BASH_SOURCE[0]}")")"
 source "$INDEX_CURRENT_DIRECTORY/../lib.sh"
 
 function home {
-  respondWithHTML
+  startResponse
   cat << EOF
 <html>
   <head></head>
@@ -18,7 +18,8 @@ EOF
 }
 
 function default {
-  respondWithHTML404
+  setResponseCode "404"
+  startResponse
   cat << EOF
 <html>
   <head></head>
@@ -40,4 +41,4 @@ EOF
 route "GET" "/" home
 route "GET" "404" default
 
-handle
+handleRequest
