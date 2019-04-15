@@ -30,6 +30,7 @@ function default {
       </marquee>
     </marquee>
     <p>Could not find $HTTP_PATH</p>
+    <a href="/">Go back home</a>
   </center>
   </body>
 </html>
