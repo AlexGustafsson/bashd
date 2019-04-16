@@ -7,7 +7,7 @@ source "$HANDLER_CURRENT_DIRECTORY/http.sh"
 # shellcheck source=./logging.sh
 source "$HANDLER_CURRENT_DIRECTORY/logging.sh"
 
-response="$("$HANDLER_CURRENT_DIRECTORY/../default/index.sh")"
+response="$("$SITE_ENTRYPOINT/index.sh")"
 exitCode="$?"
 
 if [[ "$exitCode" -eq 0 ]]; then
